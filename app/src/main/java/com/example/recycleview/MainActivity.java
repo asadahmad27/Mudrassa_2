@@ -21,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Student s0 = new Student("Ghufran", R.drawable.person_24);
-        Student s1 = new Student("Me", R.drawable.person_24);
-        Student s2 = new Student("You", R.drawable.person_24);
-        Student s3 = new Student("Nerd", R.drawable.person_24);
-        Student s4 = new Student("Nerdiest", R.drawable.person_24);
-        Student s5 = new Student("Looking Cool?", R.drawable.person_24);
+//        Student s0 = new Student("Ghufran", R.drawable.person_24, 0);
+//        Student s1 = new Student("Me", R.drawable.person_24, 1);
+//        Student s2 = new Student("You", R.drawable.person_24, 2);
+//        Student s3 = new Student("Nerd", R.drawable.person_24, 3);
+//        Student s4 = new Student("Nerdiest", R.drawable.person_24, 4);
+//        Student s5 = new Student("Looking Cool?", R.drawable.person_24, 5);
 
-        studentList.addAll(Arrays.asList(new Student[]{s0,s1,s2,s3,s4,s5}));
+        DBHandler db = new DBHandler(this);
+        studentList.addAll(db.getStudents());
 
         recyclerView = findViewById(R.id.recyclerView);
 

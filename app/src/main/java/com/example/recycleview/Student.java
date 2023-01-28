@@ -39,13 +39,15 @@ public class Student {
         }
     }
 
+    int id;
     String name;
     int image;
     ArrayList<Data> studentData;
 
-    public Student(String name, int image) {
+    public Student(String name, int image, int id) {
         this.name = name;
         this.image = image;
+        this.id = id;
         this.studentData = new ArrayList<Data>();
     }
 
