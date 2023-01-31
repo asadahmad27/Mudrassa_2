@@ -71,12 +71,11 @@ public class Student {
 
     int id;
     String name;
-    int image;
     ArrayList<Data> studentData;
 
-    public Student(String name, int image, int id) {
+    public Student(String name, int id) {
         this.name = name;
-        this.image = image;
+
         this.id = id;
         this.studentData = new ArrayList<Data>();
     }
@@ -85,7 +84,7 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", image=" + image +
+
                 '}';
     }
     public ArrayList<Data> getData() {return studentData;}
@@ -96,14 +95,6 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
     }
 
     public ArrayList<Data> getStudentData() {

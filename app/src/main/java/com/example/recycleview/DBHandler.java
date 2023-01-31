@@ -93,7 +93,7 @@ public class DBHandler extends SQLiteOpenHelper {
             do {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
                 @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-                students.add(new Student(name, R.drawable.person_24, id));
+                students.add(new Student(name, id));
             } while (cursor.moveToNext());
         }
 

@@ -15,7 +15,6 @@ import java.util.List;
 
 public class ViewData extends AppCompatActivity {
 
-    ImageView img;
     TextView name;
     ListView list;
     Student student;
@@ -26,16 +25,16 @@ public class ViewData extends AppCompatActivity {
         setContentView(R.layout.activity_view_data);
 
         Intent intent = getIntent();
-        img = findViewById(R.id.imageView2);
+
         name = findViewById(R.id.textView);
 
-        img.setImageResource(R.drawable.person_24);
+
         name.setText(intent.getStringExtra("name"));
 
         list = findViewById(R.id.listData);
         db = new DBHandler(this);
 
-        student = new Student(intent.getStringExtra("name"), R.drawable.person_24, intent.getIntExtra("id", 0));
+        student = new Student(intent.getStringExtra("name"), intent.getIntExtra("id", 0));
 
         student = db.getData(student);
 

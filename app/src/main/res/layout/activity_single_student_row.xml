@@ -13,17 +13,9 @@
         android:text="Student Name"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/studentImage"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301" />
-
-    <ImageView
-        android:id="@+id/studentImage"
-        android:layout_width="118dp"
-        android:layout_height="85dp"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintVertical_bias="0.301"
+        tools:layout_editor_absoluteX="128dp" />
 
     <ImageButton
         android:id="@+id/viewBtn"
@@ -31,12 +23,10 @@
         android:layout_height="40dp"
         android:layout_marginBottom="4dp"
         android:backgroundTint="#3474E8"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addBtn"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toEndOf="@+id/studentImage"
-        app:srcCompat="@android:drawable/ic_menu_view"
-        android:onClick="onClick"/>
+        app:srcCompat="@android:drawable/ic_menu_view" />
 
     <ImageButton
         android:id="@+id/addBtn"
