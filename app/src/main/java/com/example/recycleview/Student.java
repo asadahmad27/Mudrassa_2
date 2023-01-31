@@ -3,38 +3,68 @@ package com.example.recycleview;
 import java.util.ArrayList;
 
 public class Student {
-    public class Data {
-        int manzil;
-        int sabaq;
-        int sabqi;
+    public int getId() {
+        return id;
+    }
 
-        public Data(int manzil, int sabaq, int sabqi) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public class Data {
+        String date;
+        String manzil;
+        String sabaq;
+        String sabqi;
+
+
+        public Data(String date, String manzil, String sabaq, String sabqi) {
+            this.date = date;
             this.manzil = manzil;
             this.sabaq = sabaq;
             this.sabqi = sabqi;
         }
 
-        public int getManzil() {
+        @Override
+        public String toString() {
+            return
+                    "date='" + date + '\'' +
+                    ",\n manzil='" + manzil + '\'' +
+                    ",\n sabaq='" + sabaq + '\'' +
+                    ",\n sabqi='" + sabqi + '\'' +
+                            "\n"
+                   ;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+        public String getManzil() {
             return manzil;
         }
 
-        public void setManzil(int manzil) {
+        public void setManzil(String manzil) {
             this.manzil = manzil;
         }
 
-        public int getSabaq() {
+        public String getSabaq() {
             return sabaq;
         }
 
-        public void setSabaq(int sabaq) {
+        public void setSabaq(String sabaq) {
             this.sabaq = sabaq;
         }
 
-        public int getSabqi() {
+        public String getSabqi() {
             return sabqi;
         }
 
-        public void setSabqi(int sabqi) {
+        public void setSabqi(String sabqi) {
             this.sabqi = sabqi;
         }
     }
@@ -58,6 +88,7 @@ public class Student {
                 ", image=" + image +
                 '}';
     }
+    public ArrayList<Data> getData() {return studentData;}
 
     public String getName() {
         return name;
@@ -81,5 +112,9 @@ public class Student {
 
     public void setStudentData(ArrayList<Data> studentData) {
         this.studentData = studentData;
+    }
+
+    public void addData(String date, String manzil, String sabaq, String sabqi) {
+        this.studentData.add(new Data(date, manzil, sabaq, sabqi));
     }
 }

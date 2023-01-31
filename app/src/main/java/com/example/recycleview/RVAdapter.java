@@ -1,5 +1,6 @@
 package com.example.recycleview;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,31 +37,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyVH> {
         holder.data = studentData.get(position);
         holder.imageStudent.setImageResource(holder.data.getImage());
         holder.studentName.setText(holder.data.getName());
-
-        holder.viewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(Integer.toString(holder.getAdapterPosition()), "onClick: ");
-            }
-        });
-
-        holder.addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(Integer.toString(holder.getAdapterPosition()), "onClick: ");
-            }
-        });
-
-        holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(Integer.toString(holder.getAdapterPosition()), "onClick: ");
-                studentData.remove(holder.getAdapterPosition());
-                notifyDataSetChanged();
-
-
-            }
-        });
     }
 
     @Override
@@ -68,7 +44,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyVH> {
         return studentData.size();
     }
 
-    public class MyVH extends RecyclerView.ViewHolder {
+    public class MyVH extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageStudent;
         TextView studentName;
         ImageButton viewBtn, addBtn, deleteBtn;
@@ -80,6 +56,47 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyVH> {
             viewBtn = itemView.findViewById(R.id.viewBtn);
             addBtn = itemView.findViewById(R.id.addBtn);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);
+
+            viewBtn.setOnClickListener(this);
+            addBtn.setOnClickListener(this);
+            deleteBtn.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View view) {
+
+            switch (view.getId()) {
+                case R.id.addBtn:
+                    Intent intent = new Intent(view.getContext(), Add_Data_Student.class);
+
+                    intent.putExtra("Name", studentName.getText().toString());
+                    intent.putExtra("id", data.getId());
+
+                    view.getContext().startActivity(intent);
+                    break;
+
+                case R.id.viewBtn:
+                    Intent intent1 = new Intent(view.getContext(), ViewData.class);
+
+                    intent1.putExtra("name", studentName.getText().toString());
+                    intent1.putExtra("id", data.getId());
+
+                    view.getContext().startActivity(intent1);
+                    break;
+
+                case R.id.deleteBtn:
+
+                    studentData.remove(data.getId());
+                    notifyDataSetChanged();
+
+                    Intent intent2 = new Intent(view.getContext(), loadDel.class);
+
+                    intent2.putExtra("id", data.getId());
+                    view.getContext().startActivity(intent2);
+
+                    break;
+            }
         }
     }
 }
